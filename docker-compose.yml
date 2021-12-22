@@ -1,14 +1,14 @@
-version: '3.8'
+version: '3.9'
 
 services:
   apm01:
-    image: apm/apm-server:${VERSION}
+    image: apm/apm-server:${APM_VERSION}
     container_name: apm01
     env_file: .env
     ports:
       - ${APM_OUTBOUND_PORT}:8200
     volumes:
-      - ./configs/apm-server.docker.yml:/usr/share/apm-server/apm-server.yml:ro
+      - ./apm-server.docker.yml:/usr/share/apm-server/apm-server.yml:ro
       - certs:$CERTS_DIR
     networks:
       - elastic
